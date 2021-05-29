@@ -1,5 +1,6 @@
 package sample.model;
 
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 
 public class Utwor {
@@ -21,6 +22,20 @@ public class Utwor {
         this.id_gatunku = id_gatunku;
         this.id_albumu = id_albumu;
         this.numer_w_albumie = numer_w_albumie;
+    }
+    public Utwor(ResultSet rs) {
+        try {
+            this.id_utworu = rs.getInt(1);
+            this.tytul = rs.getString(2);
+            this.data_dodania = rs.getTimestamp(3);
+            this.data_wydania = rs.getTimestamp(4);
+            this.dlugosc = rs.getString(5);
+            this.id_gatunku = rs.getInt(6);
+            this.id_albumu = rs.getInt(7);
+            this.numer_w_albumie = rs.getInt(8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getTytul() {

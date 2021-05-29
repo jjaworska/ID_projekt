@@ -5,7 +5,8 @@ module ID.test {
     requires java.sql;
 
     opens sample;
-    opens sample.view;
+    opens sample.FXML;
     opens sample.model;
-    opens sample.dao;
+    opens sample.DB;
+    opens sample.Controllers;
 }

@@ -1,9 +1,6 @@
-package sample;
+package sample.DB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class DBConnection {
     private final static String URL = "jdbc:postgresql://localhost/projekt";
@@ -21,6 +18,18 @@ public class DBConnection {
         }
         return connection;
     }
+
+    public static ResultSet executeQuery(String query) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            return statement.executeQuery();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
     // veery basic test
     public static void main(String[] args) {
         try {

@@ -1,4 +1,4 @@
-package sample.view;
+package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.dao.UtworDao;
+import sample.DB.UtworDao;
 import sample.model.Utwor;
 
 import java.net.URL;
