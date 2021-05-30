@@ -3,7 +3,7 @@ package sample.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Playlista {
+public class Playlista implements ToSearch {
     int id_playlisty;
     int tworca;
     String nazwa;
@@ -19,6 +19,8 @@ public class Playlista {
     public String getNazwa() {
         return nazwa;
     }
+
+    public int getId_playlisty(){return id_playlisty;}
 
     @Override
     public String toString() {

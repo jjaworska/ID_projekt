@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.model.ToSearch;
 import sample.model.Uzytkownik;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class Main extends Application {
 
     public static Stage primaryStage;
     public static Uzytkownik currentUser = null;
-
+    public static ToSearch currentTitle=null;
     @Override
     public void start(Stage newPrimaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("FXML/login.fxml"));

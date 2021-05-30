@@ -3,7 +3,7 @@ package sample.model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Uzytkownik {
+public class Uzytkownik implements ToSearch{
     int id_uzytkownika;
     String nazwa;
     String email;

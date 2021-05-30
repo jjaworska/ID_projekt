@@ -3,7 +3,7 @@ package sample.model;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
-public class Utwor {
+public class Utwor implements ToSearch{
     private int id_utworu;
     private String tytul;
     private Timestamp data_dodania;
@@ -38,7 +38,7 @@ public class Utwor {
         }
     }
 
-    public String getTytul() {
+    public String getNazwa() {
         return tytul;
     }
     public int getId_albumu() {
