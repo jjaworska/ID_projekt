@@ -12,6 +12,7 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
+            <Label fx:id="autor_playlisty" prefHeight="16.0" prefWidth="321.0" text="Label" />
             <ListView fx:id="titles" prefHeight="458.0" prefWidth="316.0" />
          </children>
       </VBox>

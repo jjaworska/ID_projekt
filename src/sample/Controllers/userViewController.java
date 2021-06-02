@@ -6,7 +6,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import org.w3c.dom.events.MouseEvent;
+import javafx.scene.input.MouseEvent;
 import sample.DB.*;
 import sample.Main;
 import sample.model.*;
@@ -26,6 +26,8 @@ public class userViewController implements Initializable {
     @FXML
     public ListView<ToSearch> searchList;
     @FXML
+    public ListView<Utwor> recomends;
+    @FXML
     public TextField searchField;
 
     private ObservableList<ToSearch> observableNames;
@@ -35,8 +37,8 @@ public class userViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         username.setText(Main.currentUser.getNazwa());
         email.setText("Email: " + Main.currentUser.getEmail());
-        playlists.setItems(PlaylistaDao.getByTworca(Main.currentUser.getId_uzytkownika()));
-
+        playlists.setItems(PlaylistaDao.getByTworca((int)Main.currentUser.getId_uzytkownika()));
+        recomends.setItems(UtworDao.getRecomends());
         observableNames = FXCollections.observableArrayList
                 (Stream.of(UtworDao.getAll(), UzytkownikDao.getAll(), AlbumDao.getAll(), PlaylistaDao.getAll(), AutorDao.getAll())
                 .flatMap(x -> x.stream())
@@ -103,6 +105,14 @@ public class userViewController implements Initializable {
             Main.setCurrentScene("FXML/autorView.fxml");
         }else if(utwor instanceof Playlista){
             Main.setCurrentScene("FXML/playlistaView.fxml");
+        }
+    }
+
+    public void clickedAction2(MouseEvent mouseEvent) {
+        ToSearch utwor =recomends.getSelectionModel().getSelectedItem();
+        Main.currentTitle=utwor;
+        if(utwor instanceof Utwor){
+            Main.setCurrentScene("FXML/utworView.fxml");
         }
     }
 }

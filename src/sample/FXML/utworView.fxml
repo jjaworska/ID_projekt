@@ -2,10 +2,55 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.utworViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.utworViewController">
    <children>
-      <TextField fx:id="opis" layoutX="215.0" layoutY="150.0" prefHeight="41.0" prefWidth="171.0" />
+      <VBox layoutX="87.0" layoutY="53.0" prefHeight="439.0" prefWidth="656.0">
+         <children>
+            <Label fx:id="tytul" text="Label">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Slider fx:id="slider_rate" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="1" prefHeight="43.0" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                  <Button fx:id="button_ocena" mnemonicParsing="false" onAction="#button_rate" text="Ocen" />
+               </children>
+            </HBox>
+            <Label fx:id="ocena" text="Label">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="album" prefHeight="67.0" prefWidth="605.0" text="album ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="autorzy" prefHeight="60.0" prefWidth="605.0" text="autorzy">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="dlugosc" prefHeight="63.0" prefWidth="537.0" text="dlugosc">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="gatunek" text="Label">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="data" prefHeight="42.0" prefWidth="788.0" text="Label">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="HOME" layoutX="494.0" layoutY="616.0" mnemonicParsing="false" onAction="#goHome" text="HOME" />
    </children>
 </AnchorPane>

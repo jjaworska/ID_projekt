@@ -33,12 +33,4 @@ public class Autor implements ToSearch{
         return czy_zespol;
     }
 
-    @Override
-    public String toString() {
-        return "Utwor{" +
-                ", tytul='" + nazwa + '\'' +
-                ", data_wydania=" + id_autora +
-                ", id_albumu=" + czy_zespol +
-                '}';
-    }
 }

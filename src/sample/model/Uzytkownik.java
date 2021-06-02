@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Uzytkownik implements ToSearch{
-    int id_uzytkownika;
+    long id_uzytkownika;
     String nazwa;
     String email;
 
@@ -14,7 +14,7 @@ public class Uzytkownik implements ToSearch{
         this.email = email;
     }
     public Uzytkownik(ResultSet rs) throws SQLException {
-        this.id_uzytkownika = rs.getInt(1);
+        this.id_uzytkownika = rs.getLong(1);
         this.nazwa = rs.getString(2);
         this.email = rs.getString(3);
     }
@@ -25,8 +25,7 @@ public class Uzytkownik implements ToSearch{
     public String getEmail() {
         return email;
     }
-
-    public int getId_uzytkownika() {
+    public long getId_uzytkownika() {
         return id_uzytkownika;
     }
 

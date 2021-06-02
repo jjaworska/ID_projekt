@@ -44,8 +44,14 @@ public class Utwor implements ToSearch{
     public int getId_albumu() {
         return id_albumu;
     }
+    public int getId_utworu() {
+        return id_utworu;
+    }
     public int getId_gatunku() {
         return id_gatunku;
+    }
+    public int getNumer_w_albumie() {
+        return numer_w_albumie;
     }
     public Timestamp getData_dodania() {
         return data_dodania;
@@ -59,15 +65,6 @@ public class Utwor implements ToSearch{
 
     @Override
     public String toString() {
-        return "Utwor{" +
-                "id_utworu=" + id_utworu +
-                ", tytul='" + tytul + '\'' +
-                ", data_dodania=" + data_dodania +
-                ", data_wydania=" + data_wydania +
-                ", dlugosc='" + dlugosc + '\'' +
-                ", id_gatunku=" + id_gatunku +
-                ", id_albumu=" + id_albumu +
-                ", numer_w_albumie=" + numer_w_albumie +
-                '}';
+        return tytul;
     }
 }

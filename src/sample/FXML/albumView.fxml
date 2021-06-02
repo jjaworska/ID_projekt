@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controllers.albumViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.albumViewController">
+    <children>
+        <VBox layoutX="59.0" layoutY="34.0" prefHeight="337.0" prefWidth="316.0">
+            <children>
+                <Label fx:id="albumName" prefHeight="30.0" prefWidth="316.0" text="Label">
+                    <font>
+                        <Font size="18.0" />
+                    </font></Label>
+                <Label fx:id="autor_albumu" prefHeight="36.0" prefWidth="316.0" text="Label" />
+                <ListView fx:id="titles" onMouseClicked="#select_utwor" prefHeight="256.0" prefWidth="316.0" />
+            </children>
+        </VBox>
+        <Button fx:id="home" layoutX="524.0" layoutY="536.0" mnemonicParsing="false" onAction="#goHome" text="HOME" />
+    </children>
 </AnchorPane>

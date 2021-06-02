@@ -22,6 +22,8 @@ public class Playlista implements ToSearch {
 
     public int getId_playlisty(){return id_playlisty;}
 
+    public int getId_tworcy(){return tworca;}
+
     @Override
     public String toString() {
         return nazwa;

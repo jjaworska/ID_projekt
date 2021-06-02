@@ -3,6 +3,7 @@ package sample.DB;
 import sample.model.Autor;
 
 import java.sql.ResultSet;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,16 @@ public class AutorDao {
             return null;
         }
     }
-
+    public static List<String> getByAlbum(long id_albumu) {
+        List<Autor> res = new LinkedList<>();
+            ResultSet rs = DBConnection.executeQuery("SELECT album_autorzy("+id_albumu+")");
+            try {
+                rs.next();
+                return Arrays.asList((String[])rs.getArray(1).getArray());
+            } catch(Exception e) {
+                return null;
+            }
+    }
     public static List<Autor> getAll() {
         List<Autor> res = new LinkedList<>();
         try {

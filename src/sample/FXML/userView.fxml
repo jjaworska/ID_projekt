@@ -7,51 +7,61 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.userViewController">
    <children>
-      <SplitPane dividerPositions="0.5041782729805014" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5793871866295265" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="456.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+            <SplitPane dividerPositions="0.5166975881261595" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label text="Welcome!">
-                           <font>
-                              <Font size="31.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="20.0" left="40.0" top="40.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="username" text="Username">
-                           <VBox.margin>
-                              <Insets bottom="20.0" left="40.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="email" text="Email">
-                           <VBox.margin>
-                              <Insets left="40.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <VBox prefHeight="200.0" prefWidth="456.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                            <children>
-                              <TextField fx:id="searchField" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="241.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button mnemonicParsing="false" text="Button" />
+                              <Label text="Welcome!">
+                                 <font>
+                                    <Font size="31.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="40.0" top="40.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="username" text="Username">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="40.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="email" text="Email">
+                                 <VBox.margin>
+                                    <Insets left="40.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                              <TextField fx:id="searchField" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="407.0" />
+                              <ListView fx:id="searchList" editable="true" minWidth="-Infinity" onMouseClicked="#clickedAction" prefHeight="235.0" prefWidth="344.0" />
                            </children>
-                        </HBox>
-                        <ListView fx:id="searchList" editable="true" layoutX="32.0" layoutY="32.0" minWidth="-Infinity" onMouseClicked="#clickedAction" prefHeight="235.0" prefWidth="344.0" />
+                        </VBox>
                      </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox prefHeight="358.0" prefWidth="602.0">
+                           <children>
+                              <Label prefHeight="30.0" prefWidth="478.0" text="Recomended titles: ">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <ListView fx:id="recomends" onMouseClicked="#clickedAction2" prefHeight="339.0" prefWidth="602.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
             <AnchorPane prefHeight="718.0" prefWidth="625.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
