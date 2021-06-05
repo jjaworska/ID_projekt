@@ -11,6 +11,7 @@ import sample.DB.PlaylistaDao;
 import sample.DB.UzytkownikDao;
 import sample.Main;
 import sample.model.Playlista;
+import sample.model.Utwor;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ public class playlistaViewController implements Initializable {
     @FXML
     public Label albumName;
     @FXML
-    public ListView<String> titles;
+    public ListView<Utwor> titles;
     @FXML
     public Label autor_playlisty;
-    private ObservableList<String> observableNames;
+    private ObservableList<Utwor> observableNames;
     Playlista playlista;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,12 +37,18 @@ public class playlistaViewController implements Initializable {
         autor_playlisty.setText(UzytkownikDao.get(playlista.getId_tworcy()).getNazwa());
         final List<Integer>i=new ArrayList<>();
         i.add(1);
-        observableNames= FXCollections.observableArrayList(PlaylistaDao.getUtwory(playlista.getId_playlisty()).
-                stream().map(x->(i.set(0, i.get(0)+1))+". "+x.getNazwa()).toList());
+        observableNames= FXCollections.observableArrayList(PlaylistaDao.getUtwory(playlista.getId_playlisty())/*.
+                stream().map(x->(i.set(0, i.get(0)+1))+". "+x.getNazwa()).toList()*/);
         titles.setItems(observableNames);
     }
     @FXML
     public void goHome(ActionEvent actionEvent) {
         Main.setCurrentScene("FXML/userView.fxml");
+    }
+
+    @FXML
+    public void selectUtwor(javafx.scene.input.MouseEvent mouseEvent) {
+        Main.currentTitle = titles.getSelectionModel().getSelectedItem();
+        Main.setCurrentScene("FXML/utworView.fxml");
     }
 }

@@ -41,18 +41,18 @@ public class utworViewController implements Initializable {
         utwor_widok=UtworDao.getUtwor_widok(utwor.getNazwa());
         tytul.setText(utwor.getNazwa());
         data.setText("data wydania: "+utwor_widok.getData_wydania().toLocalDateTime().format( DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString());
-        dlugosc.setText("dlugosc utworu: "+utwor.getDlugosc());
+        dlugosc.setText("długość utworu: "+utwor.getDlugosc());
         autorzy.setText("autorzy:\n"+utwor_widok.getAutorzy().stream()
                 .map(n -> String.valueOf(n))
                 .collect(Collectors.joining("\n   ")));
         album.setText(utwor_widok.getAlbum());
-        ocena.setText("ocena uzytkownikow: "+utwor_widok.ocena());
-        gatunek.setText("gatuenk: "+utwor_widok.getGatunek());
+        ocena.setText("ocena użytkowników: "+utwor_widok.ocena());
+        gatunek.setText("gatunek: "+utwor_widok.getGatunek());
     }
 
     public void button_rate(ActionEvent actionEvent) {
         UtworDao.rate(utwor.getId_utworu(), (int)slider_rate.getValue());
-        ocena.setText("ocena uzytkownikow: "+UtworDao.getocena(utwor.getNazwa()));
+        ocena.setText("ocena użytkowników: "+UtworDao.getocena(utwor.getNazwa()));
     }
 
     public void goHome(ActionEvent actionEvent) {

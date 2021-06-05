@@ -1,29 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.uzytkownikViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.uzytkownikViewController">
     <children>
         <SplitPane dividerPositions="0.362116991643454" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                       <children>
-                          <VBox layoutX="29.0" prefHeight="372.0" prefWidth="524.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                          <VBox layoutX="29.0" prefHeight="372.0" prefWidth="524.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                               <children>
-                                  <Label fx:id="username" text="Username">
-                                      <VBox.margin>
-                                          <Insets bottom="20.0" left="40.0" />
-                                      </VBox.margin>
-                                      <font>
-                                          <Font size="24.0" />
-                                      </font>
-                                  </Label>
+                        <HBox prefWidth="200.0">
+                           <children>
+                                        <Label fx:id="username" text="Username">
+                                            <font>
+                                                <Font size="30.0" />
+                                            </font>
+                                        </Label>
+                              <ImageView fitHeight="30.0" fitWidth="200.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/user.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
                                   <Label fx:id="num_followers" prefHeight="21.0" prefWidth="169.0" text="followers">
                                       <VBox.margin>
-                                          <Insets left="40.0" />
+                                          <Insets top="10.0" />
                                       </VBox.margin>
                                       <font>
                                           <Font size="18.0" />
@@ -43,7 +59,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
                             <children>
-                                <Label fx:id="playlist_napis" prefHeight="50.0" prefWidth="461.0" text="playlisty">
+                                <Label fx:id="playlist_napis" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="461.0" text="playlisty">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -52,7 +68,10 @@
                                     </padding>
                                 </Label>
                                 <ListView fx:id="playlists" onMouseClicked="#myPlaylistChosen" prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" text="HOME" />
+                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" text="HOME">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin></Button>
                             </children>
                         </VBox>
                     </children>

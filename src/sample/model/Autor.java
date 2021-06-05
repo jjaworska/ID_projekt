@@ -4,9 +4,13 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 
 public class Autor implements ToSearch{
-    private int id_autora;
-    private String nazwa;
-    private String czy_zespol;
+    protected int id_autora;
+    protected String nazwa;
+    protected String czy_zespol;
+
+    // parameterless constructor to enable inheritance in bandMember
+    Autor() {
+    }
 
     public Autor(int id_autora, String nazwa, String czy_zespol) {
         this.id_autora = id_autora;
@@ -29,8 +33,12 @@ public class Autor implements ToSearch{
     public int getId_autora() {
         return id_autora;
     }
-    public String getCzy_zespol() {
-        return czy_zespol;
+    public boolean getCzy_zespol() {
+        return czy_zespol.equals("T");
     }
 
+    @Override
+    public String toString() {
+        return nazwa;
+    }
 }

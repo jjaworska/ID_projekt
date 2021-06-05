@@ -38,7 +38,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Slider fx:id="slider_rate" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="1" prefHeight="60.0" prefWidth="400.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0">
+                  <Slider fx:id="slider_rate" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="1" prefHeight="60.0" prefWidth="400.0" showTickLabels="true" snapToTicks="true" value="1.0">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>

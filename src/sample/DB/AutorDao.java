@@ -13,6 +13,7 @@ public class AutorDao {
     public static Autor get(long id) {
         ResultSet rs = DBConnection.executeQuery("SELECT * FROM Autorzy WHERE id_Autora = " + id) ;
         try {
+            rs.next();
             return new Autor(rs);
         } catch(Exception e) {
             return null;

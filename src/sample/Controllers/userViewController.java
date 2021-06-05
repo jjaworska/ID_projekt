@@ -102,7 +102,10 @@ public class userViewController implements Initializable {
         }else if(utwor instanceof Album){
             Main.setCurrentScene("FXML/albumView.fxml");
         }else if(utwor instanceof Autor){
-            Main.setCurrentScene("FXML/autorView.fxml");
+            if(((Autor) utwor).getCzy_zespol())
+                Main.setCurrentScene("FXML/bandView.fxml");
+            else
+                Main.setCurrentScene("FXML/autorView.fxml");
         }else if(utwor instanceof Playlista){
             Main.setCurrentScene("FXML/playlistaView.fxml");
         }
