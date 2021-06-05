@@ -93,8 +93,8 @@ public class userViewController implements Initializable {
         Main.setCurrentScene("FXML/playlistaView.fxml");
     }
     public void clickedAction(javafx.scene.input.MouseEvent mouseEvent){
-        ToSearch utwor =searchList.getSelectionModel().getSelectedItem();
-        Main.currentTitle=utwor;
+        ToSearch utwor = searchList.getSelectionModel().getSelectedItem();
+        Main.currentTitle = utwor;
         if(utwor instanceof Utwor){
             Main.setCurrentScene("FXML/utworView.fxml");
         } else if(utwor instanceof Uzytkownik){

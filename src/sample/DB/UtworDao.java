@@ -1,10 +1,8 @@
 package sample.DB;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.Main;
-import sample.model.Autor;
 import sample.model.Utwor;
 import sample.model.Utwor_widok;
 
@@ -24,10 +22,11 @@ public class UtworDao {
             return null;
         }
     }
+
     public static Utwor_widok getUtwor_widok(String title) {
         try {
             ResultSet rs = DBConnection.executeQuery("SELECT * from utwory_widok where tytul='"+title+"'");
-            while(rs != null && rs.next()) {
+            while (rs != null && rs.next()) {
                 return (new Utwor_widok(rs));
             }
         } catch (Exception e) {

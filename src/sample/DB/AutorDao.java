@@ -2,10 +2,12 @@ package sample.DB;
 
 import sample.model.Autor;
 
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
+import static sample.DB.DBConnection.getConnection;
 
 public class AutorDao {
     public static Autor get(long id) {
@@ -37,5 +39,24 @@ public class AutorDao {
             e.printStackTrace();
         }
         return res;
+    }
+
+    public static List<String> AutorRole(int id) {
+        try {
+            Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT wypisz_role_autora(" + id + ")");
+            ResultSet rs = statement.executeQuery();
+            rs.next();
+            Array roles = rs.getArray(1);
+            return Arrays.asList((String[]) roles.getArray());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return new LinkedList<String>();
+        }
+    }
+
+    // Again, a basic test
+    public static void main(String[] args) {
+        System.out.println(AutorRole(7));
     }
 }

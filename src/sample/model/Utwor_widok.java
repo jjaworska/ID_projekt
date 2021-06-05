@@ -58,5 +58,4 @@ public class Utwor_widok {
             return gatunek;
         }
 
-
     }
