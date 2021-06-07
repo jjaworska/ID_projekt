@@ -34,9 +34,9 @@ public class albumViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         album=(Album) Main.currentTitle;
         albumName.setText(album.getNazwa());
-        autor_albumu.setText("autorzy:\n"+ AutorDao.getByAlbum(album.getId_albumu()).stream()
+        autor_albumu.setText("autorzy: "+ AutorDao.getByAlbum(album.getId_albumu()).stream()
                 .map(n -> String.valueOf(n))
-                .collect(Collectors.joining("\n   ")));
+                .collect(Collectors.joining(", ")));
         observableNames= FXCollections.observableArrayList(AlbumDao.getUtwory(album.getId_albumu()));
         titles.setItems(observableNames);
                 //stream().map(x->x.getNumer_w_albumie()+". "+x.getNazwa()).toList());

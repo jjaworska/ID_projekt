@@ -10,6 +10,7 @@ import sample.DB.AutorDao;
 import sample.DB.DBConnection;
 import sample.Main;
 import sample.model.Autor;
+import sample.model.ToSearch;
 import sample.model.Utwor;
 import sample.model.bandMember;
 
@@ -35,10 +36,14 @@ public class bandViewController implements Initializable {
         autorNazwa.setText(band.getNazwa());
         StringBuilder roleBuilder = new StringBuilder();
         for(String rola: AutorDao.AutorRole(band.getId_autora())) {
-            roleBuilder.append(rola).append("\n");
+            roleBuilder.append(rola).append(", ");
         }
-        ResultSet rs = DBConnection.executeQuery("SELECT * FROM utwory WHERE id_utworu IN " +
-                "(SELECT id_utworu FROM utwory_autorzy WHERE id_autora = " + band.getId_autora() + ") LIMIT 5");
+        ResultSet rs = DBConnection.executeQuery("SELECT * FROM utwory u WHERE id_utworu IN " +
+                "(SELECT id_utworu FROM utwory_autorzy WHERE id_autora = " + band.getId_autora() +
+                ") ORDER BY u.oceny_suma::NUMERIC/GREATEST(u.oceny_liczba, 1) DESC LIMIT 5");
+        /*ResultSet rs = DBConnection.executeQuery("SELECT * FROM utwory u WHERE id_utworu IN " +
+                "(SELECT id_utworu FROM utwory_autorzy WHERE id_autora = " + band.getId_autora() + ") " +
+                "ORDER BY (CASE WHEN u.oceny_liczba >0 THEN ROUND(u.oceny_suma::NUMERIC/u.oceny_liczba, 2) ELSE NULL) LIMIT 5");*/
         ObservableList<Utwor> greatestHits = FXCollections.observableArrayList();
         try {
             while (rs.next()) {
@@ -70,14 +75,19 @@ public class bandViewController implements Initializable {
 
     @FXML
     public void selectUtwor(javafx.scene.input.MouseEvent mouseEvent) {
-        Main.currentTitle = greatestHitsView.getSelectionModel().getSelectedItem();
-        Main.setCurrentScene("FXML/utworView.fxml");
+        ToSearch toView = greatestHitsView.getSelectionModel().getSelectedItem();
+        if(toView != null) {
+            Main.currentTitle = toView;
+            Main.setCurrentScene("FXML/utworView.fxml");
+        }
     }
 
     @FXML
     public void selectMember(javafx.scene.input.MouseEvent mouseEvent) {
         bandMember chosen = bandMembers.getSelectionModel().getSelectedItem();
-        Main.currentTitle = AutorDao.get(chosen.getId_autora());
-        Main.setCurrentScene("FXML/autorView.fxml");
+        if(chosen != null) {
+            Main.currentTitle = AutorDao.get(chosen.getId_autora());
+            Main.setCurrentScene("FXML/autorView.fxml");
+        }
     }
 }

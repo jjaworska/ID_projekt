@@ -10,6 +10,7 @@ import sample.DB.AutorDao;
 import sample.DB.DBConnection;
 import sample.Main;
 import sample.model.Autor;
+import sample.model.ToSearch;
 import sample.model.Utwor;
 
 import java.net.URL;
@@ -53,7 +54,10 @@ public class autorViewController implements Initializable {
     }
 
     public void selectUtwor(javafx.scene.input.MouseEvent mouseEvent) {
-        Main.currentTitle = greatestHitsView.getSelectionModel().getSelectedItem();
-        Main.setCurrentScene("FXML/utworView.fxml");
+        ToSearch toView = greatestHitsView.getSelectionModel().getSelectedItem();
+        if(toView != null) {
+            Main.currentTitle = toView;
+            Main.setCurrentScene("FXML/utworView.fxml");
+        }
     }
 }

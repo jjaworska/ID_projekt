@@ -40,7 +40,7 @@ public class userViewController implements Initializable {
         playlists.setItems(PlaylistaDao.getByTworca((int)Main.currentUser.getId_uzytkownika()));
         recomends.setItems(UtworDao.getRecomends());
         observableNames = FXCollections.observableArrayList
-                (Stream.of(UtworDao.getAll(), UzytkownikDao.getAll(), AlbumDao.getAll(), PlaylistaDao.getAll(), AutorDao.getAll())
+                (Stream.of(UtworDao.getAll(), UzytkownikDao.getAll(), AlbumDao.getAll(), PlaylistaDao.getVisiblePlaylists(Main.currentUser.getId_uzytkownika()), AutorDao.getAll())
                 .flatMap(x -> x.stream())
                 .collect(Collectors.toList()));
         filteredData = new FilteredList<>
@@ -114,9 +114,11 @@ public class userViewController implements Initializable {
 
     public void clickedAction2(MouseEvent mouseEvent) {
         ToSearch utwor =recomends.getSelectionModel().getSelectedItem();
-        Main.currentTitle=utwor;
-        if(utwor instanceof Utwor){
-            Main.setCurrentScene("FXML/utworView.fxml");
+        if(utwor != null) {
+            Main.currentTitle = utwor;
+            if (utwor instanceof Utwor) {
+                Main.setCurrentScene("FXML/utworView.fxml");
+            }
         }
     }
 }

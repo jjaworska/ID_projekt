@@ -39,15 +39,19 @@ public class uzytkownikViewController implements Initializable {
     }
     public void myPlaylistChosen(javafx.scene.input.MouseEvent mouseEvent){
         ToSearch utwor =playlists.getSelectionModel().getSelectedItem();
-        Main.currentTitle=utwor;
-        Main.setCurrentScene("FXML/playlistaView.fxml");
+        if(utwor != null) {
+            Main.currentTitle = utwor;
+            Main.setCurrentScene("FXML/playlistaView.fxml");
+        }
     }
 
     public void clickedAction(MouseEvent mouseEvent) {
         if(playlists.getSelectionModel().getSelectedItem()==null)return;
         ToSearch utwor =playlists.getSelectionModel().getSelectedItem();
-        Main.currentTitle=utwor;
+        if(utwor != null) {
+            Main.currentTitle = utwor;
             Main.setCurrentScene("FXML/playlistView.fxml");
+        }
     }
 
     public void goHome(ActionEvent actionEvent) {
@@ -66,3 +70,4 @@ public class uzytkownikViewController implements Initializable {
         num_followers.setText("followers: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
     }
 }
+

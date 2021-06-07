@@ -32,6 +32,39 @@ public class PlaylistaDao {
         return x;
     }
 
+
+    public static ObservableList<Playlista> getVisiblePlaylists(long id) {
+        ResultSet rs = DBConnection.executeQuery("select p.* from playlisty p" +
+                        " join uzytkownicy u on p.tworca = u.id_uzytkownika " +
+                        "left outer join obserwujacy o on p.tworca = o.id_obserwowanego " +
+                        "where p.dostep = 'P' or (p.dostep = 'O' and o.id_obserwujacego="+id+") " +
+                        "or (p.dostep = 'O' and p.tworca="+id+") or (p.dostep = 'U' and p.tworca="+id+")");
+        ObservableList<Playlista> answer = FXCollections.observableArrayList();
+        try {
+            while(rs.next())
+                answer.add(new Playlista(rs));
+        } catch (Exception e) {
+            // the list will be empty then
+        }
+        return answer;
+    }
+
+    public static ObservableList<Playlista> getVisiblePlaylistsFor(long id_user, long id) {
+        ResultSet rs = DBConnection.executeQuery("select p.* from playlisty p" +
+                " join uzytkownicy u on p.tworca = u.id_uzytkownika " +
+                "left outer join obserwujacy o on p.tworca = o.id_obserwowanego " +
+                "where p.tworca= "+id_user+" and p.dostep = 'P' or (p.dostep = 'O' and o.id_obserwujacego="+id+") " +
+                "or (p.dostep = 'O' and p.tworca="+id+") or (p.dostep = 'U' and p.tworca="+id+")");
+        ObservableList<Playlista> answer = FXCollections.observableArrayList();
+        try {
+            while(rs.next())
+                answer.add(new Playlista(rs));
+        } catch (Exception e) {
+            // the list will be empty then
+        }
+        return answer;
+    }
+
     public static ObservableList<Utwor> getUtwory(int id){
         ResultSet rs = DBConnection.executeQuery("SELECT utwory.* FROM utwory natural join utwory_playlisty WHERE id_playlisty=" + id +" order by nr_w_playliscie");
         ObservableList<Utwor> x = FXCollections.observableArrayList();
