@@ -23,9 +23,9 @@ public class UtworDao {
         }
     }
 
-    public static Utwor_widok getUtwor_widok(String title) {
+    public static Utwor_widok getUtwor_widok(long id) {
         try {
-            ResultSet rs = DBConnection.executeQuery("SELECT * from utwory_widok where tytul='"+title+"'");
+            ResultSet rs = DBConnection.executeQuery("SELECT * from utwory_widok where id_utworu="+id);
             while (rs != null && rs.next()) {
                 return (new Utwor_widok(rs));
             }
@@ -68,9 +68,9 @@ public class UtworDao {
             e.printStackTrace();
         }
     }
-    public static double getocena(String title) {
+    public static double getocena(int id) {
         try {
-            ResultSet rs = DBConnection.executeQuery("SELECT ocena from utwory_widok where tytul='"+title+"'");
+            ResultSet rs = DBConnection.executeQuery("SELECT ocena from utwory_widok where id_utworu='"+id+"'");
             while(rs != null && rs.next()) {
                 return rs.getDouble(1);
             }

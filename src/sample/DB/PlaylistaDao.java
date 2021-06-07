@@ -34,11 +34,7 @@ public class PlaylistaDao {
 
 
     public static ObservableList<Playlista> getVisiblePlaylists(long id) {
-        ResultSet rs = DBConnection.executeQuery("select p.* from playlisty p" +
-                        " join uzytkownicy u on p.tworca = u.id_uzytkownika " +
-                        "left outer join obserwujacy o on p.tworca = o.id_obserwowanego " +
-                        "where p.dostep = 'P' or (p.dostep = 'O' and o.id_obserwujacego="+id+") " +
-                        "or (p.dostep = 'O' and p.tworca="+id+") or (p.dostep = 'U' and p.tworca="+id+")");
+        ResultSet rs = DBConnection.executeQuery("select * from widoczne_playlisty("+id+")");
         ObservableList<Playlista> answer = FXCollections.observableArrayList();
         try {
             while(rs.next())
@@ -50,11 +46,7 @@ public class PlaylistaDao {
     }
 
     public static ObservableList<Playlista> getVisiblePlaylistsFor(long id_user, long id) {
-        ResultSet rs = DBConnection.executeQuery("select p.* from playlisty p" +
-                " join uzytkownicy u on p.tworca = u.id_uzytkownika " +
-                "left outer join obserwujacy o on p.tworca = o.id_obserwowanego " +
-                "where p.tworca= "+id_user+" and p.dostep = 'P' or (p.dostep = 'O' and o.id_obserwujacego="+id+") " +
-                "or (p.dostep = 'O' and p.tworca="+id+") or (p.dostep = 'U' and p.tworca="+id+")");
+        ResultSet rs = DBConnection.executeQuery("select * from widoczne_playlisty_tworcy("+id+","+id_user+")");
         ObservableList<Playlista> answer = FXCollections.observableArrayList();
         try {
             while(rs.next())

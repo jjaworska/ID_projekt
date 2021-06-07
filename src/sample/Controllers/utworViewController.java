@@ -38,7 +38,7 @@ public class utworViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         utwor=(Utwor) Main.currentTitle;
-        utwor_widok=UtworDao.getUtwor_widok(utwor.getNazwa());
+        utwor_widok=UtworDao.getUtwor_widok(utwor.getId_utworu());
         tytul.setText(utwor.getNazwa());
         data.setText("data wydania: "+utwor_widok.getData_wydania().toLocalDateTime().format( DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString());
         dlugosc.setText("długość utworu: "+utwor.getDlugosc());
@@ -55,7 +55,7 @@ public class utworViewController implements Initializable {
 
     public void button_rate(ActionEvent actionEvent) {
         UtworDao.rate(utwor.getId_utworu(), (int)slider_rate.getValue());
-        ocena.setText("ocena użytkowników: "+UtworDao.getocena(utwor.getNazwa()));
+        ocena.setText("ocena użytkowników: "+UtworDao.getocena(utwor.getId_utworu()));
     }
 
     public void goHome(ActionEvent actionEvent) {
