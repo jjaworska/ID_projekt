@@ -40,7 +40,8 @@ public class userViewController implements Initializable {
         playlists.setItems(PlaylistaDao.getByTworca((int)Main.currentUser.getId_uzytkownika()));
         recomends.setItems(UtworDao.getRecomends());
         observableNames = FXCollections.observableArrayList
-                (Stream.of(UtworDao.getAll(), UzytkownikDao.getAll(), AlbumDao.getAll(), PlaylistaDao.getVisiblePlaylists(Main.currentUser.getId_uzytkownika()), AutorDao.getAll())
+                (Stream.of(UtworDao.getAll(), UzytkownikDao.getAll(), AlbumDao.getAll(),
+                        PlaylistaDao.getVisiblePlaylists(Main.currentUser.getId_uzytkownika()), AutorDao.getAll())
                 .flatMap(x -> x.stream())
                 .collect(Collectors.toList()));
         filteredData = new FilteredList<>

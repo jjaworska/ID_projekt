@@ -1,8 +1,5 @@
 package sample.Controllers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,8 +11,6 @@ import sample.model.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class uzytkownikViewController implements Initializable {
     @FXML
@@ -31,7 +26,7 @@ public class uzytkownikViewController implements Initializable {
         playlist_napis.setText(Main.currentTitle.getNazwa()+"'s playlists:");
         num_followers.setText("followers: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
         num_following.setText("following: "+UzytkownikDao.getObesrwuje(Main.currentTitle.getNazwa()));
-        playlists.setItems(PlaylistaDao.getByTworca((int)((Uzytkownik)Main.currentTitle).getId_uzytkownika()));
+        playlists.setItems(PlaylistaDao.getVisiblePlaylistsFor(((Uzytkownik)Main.currentTitle).getId_uzytkownika(), Main.currentUser.getId_uzytkownika()));
         if(UzytkownikDao.doIfollow((int)((Uzytkownik)Main.currentTitle).getId_uzytkownika()))
         follow_btn.setText("unfollow");
         else
@@ -62,10 +57,12 @@ public class uzytkownikViewController implements Initializable {
         if(follow_btn.getText()=="follow"){
             UzytkownikDao.follow(((Uzytkownik)Main.currentTitle).getId_uzytkownika());
             follow_btn.setText("unfollow");
+            playlists.setItems(PlaylistaDao.getVisiblePlaylistsFor(((Uzytkownik)Main.currentTitle).getId_uzytkownika(), Main.currentUser.getId_uzytkownika()));
         }
         else{
             UzytkownikDao.unfollow(((Uzytkownik)Main.currentTitle).getId_uzytkownika());
             follow_btn.setText("follow");
+            playlists.setItems(PlaylistaDao.getVisiblePlaylistsFor(((Uzytkownik)Main.currentTitle).getId_uzytkownika(), Main.currentUser.getId_uzytkownika()));
         }
         num_followers.setText("followers: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
     }
