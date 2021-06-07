@@ -32,7 +32,6 @@ public class playlistaViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playlista=(Playlista) Main.currentTitle;
         albumName.setText(playlista.getNazwa());
-        System.out.println(playlista.getId_tworcy());
 
         autor_playlisty.setText(UzytkownikDao.get(playlista.getId_tworcy()).getNazwa());
         final List<Integer>i=new ArrayList<>();
@@ -48,6 +47,7 @@ public class playlistaViewController implements Initializable {
 
     @FXML
     public void selectUtwor(javafx.scene.input.MouseEvent mouseEvent) {
+        if(titles.getSelectionModel().getSelectedItem()==null)return;
         Main.currentTitle = titles.getSelectionModel().getSelectedItem();
         Main.setCurrentScene("FXML/utworView.fxml");
     }

@@ -11,7 +11,7 @@ public class Utwor implements ToSearch{
     private String dlugosc; // actually Interval type
     private int id_gatunku;
     private int id_albumu;
-    private int numer_w_albumie;
+    private Integer numer_w_albumie;
 
     public Utwor(int id_utworu, String tytul, Timestamp data_dodania, Timestamp data_wydania, String dlugosc, int id_gatunku, int id_albumu, int numer_w_albumie) {
         this.id_utworu = id_utworu;
@@ -62,7 +62,7 @@ public class Utwor implements ToSearch{
     public String getDlugosc() {
         return dlugosc;
     }
-
+    public String nazwaAlbum(){return numer_w_albumie +". "+tytul;}
     @Override
     public String toString() {
         return tytul;

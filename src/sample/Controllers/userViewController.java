@@ -88,6 +88,7 @@ public class userViewController implements Initializable {
         });
     }
     public void myPlaylistChosen(javafx.scene.input.MouseEvent mouseEvent){
+        if(playlists.getSelectionModel().getSelectedItem()==null)return;
         ToSearch utwor =playlists.getSelectionModel().getSelectedItem();
         Main.currentTitle=utwor;
         Main.setCurrentScene("FXML/playlistaView.fxml");

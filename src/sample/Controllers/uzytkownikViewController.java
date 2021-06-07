@@ -44,6 +44,7 @@ public class uzytkownikViewController implements Initializable {
     }
 
     public void clickedAction(MouseEvent mouseEvent) {
+        if(playlists.getSelectionModel().getSelectedItem()==null)return;
         ToSearch utwor =playlists.getSelectionModel().getSelectedItem();
         Main.currentTitle=utwor;
             Main.setCurrentScene("FXML/playlistView.fxml");

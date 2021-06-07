@@ -42,10 +42,13 @@ public class utworViewController implements Initializable {
         tytul.setText(utwor.getNazwa());
         data.setText("data wydania: "+utwor_widok.getData_wydania().toLocalDateTime().format( DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString());
         dlugosc.setText("długość utworu: "+utwor.getDlugosc());
-        autorzy.setText("autorzy:\n"+utwor_widok.getAutorzy().stream()
+        autorzy.setText("autorzy:\n   "+utwor_widok.getAutorzy().stream()
                 .map(n -> String.valueOf(n))
                 .collect(Collectors.joining("\n   ")));
-        album.setText(utwor_widok.getAlbum());
+        if(utwor_widok.getAlbum()==null)
+            album.setText("(brak albumu)");
+        else
+        album.setText("album: "+utwor_widok.getAlbum());
         ocena.setText("ocena użytkowników: "+utwor_widok.ocena());
         gatunek.setText("gatunek: "+utwor_widok.getGatunek());
     }

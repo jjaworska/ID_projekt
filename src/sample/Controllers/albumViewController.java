@@ -47,6 +47,7 @@ public class albumViewController implements Initializable {
     }
 
     public void select_utwor(MouseEvent mouseEvent) {
+        if(titles.getSelectionModel().getSelectedItem()==null)return;
         ToSearch utwor = titles.getSelectionModel().getSelectedItem();
         Main.currentTitle=utwor;
         if(utwor instanceof Utwor){
