@@ -33,7 +33,7 @@ public class autorViewController implements Initializable {
         autorNazwa.setText(autor.getNazwa());
         StringBuilder roleBuilder = new StringBuilder();
         for(String rola: AutorDao.AutorRole(autor.getId_autora())) {
-            roleBuilder.append(rola).append("\n");
+            roleBuilder.append(rola).append(", ");
         }
         ResultSet rs = DBConnection.executeQuery("SELECT * FROM utwory WHERE id_utworu IN " +
                 "(SELECT id_utworu FROM utwory_autorzy WHERE id_autora = " + autor.getId_autora() + ") LIMIT 5");

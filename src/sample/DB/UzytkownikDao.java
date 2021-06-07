@@ -37,8 +37,34 @@ public class UzytkownikDao {
             return null;
         }
     }
+    public static Uzytkownik getByUsername(String username, int haslo) {
+        ResultSet rs = DBConnection.executeQuery("SELECT * FROM uzytkownicy WHERE nazwa = \'" + username + "\' and haslo = " + haslo) ;
+        try {
+            rs.next();
+            return new Uzytkownik(rs);
+        } catch(SQLException throwables) {
+            return null;
+        }
+    }
+
     public static Uzytkownik getByUsername(String username) {
         ResultSet rs = DBConnection.executeQuery("SELECT * FROM uzytkownicy WHERE nazwa = \'" + username + "\'") ;
+        try {
+            rs.next();
+            return new Uzytkownik(rs);
+        } catch(SQLException throwables) {
+            return null;
+        }
+    }
+
+    public static Uzytkownik addUser(String username, String email, int password) {
+        try {
+            Statement stmt = DBConnection.getConnection().createStatement();
+            stmt.executeUpdate("insert into uzytkownicy(nazwa, email, haslo) values(\'"+username+"\', \'"+email+"\', "+password+")");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ResultSet rs = DBConnection.executeQuery("SELECT * FROM uzytkownicy WHERE nazwa = '" + username + "'") ;
         try {
             rs.next();
             return new Uzytkownik(rs);
