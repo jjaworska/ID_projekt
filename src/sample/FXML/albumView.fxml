@@ -42,6 +42,6 @@
                 <ListView fx:id="titles" onMouseClicked="#select_utwor" prefHeight="256.0" prefWidth="316.0" />
             </children>
         </VBox>
-        <Button fx:id="home" layoutX="511.0" layoutY="620.0" mnemonicParsing="false" onAction="#goHome" prefHeight="20.0" text="HOME" AnchorPane.bottomAnchor="40.0" />
+        <Button fx:id="home" layoutX="511.0" layoutY="620.0" mnemonicParsing="false" onAction="#goHome" prefHeight="20.0" text="WRÓĆ" AnchorPane.bottomAnchor="40.0" />
     </children>
 </AnchorPane>

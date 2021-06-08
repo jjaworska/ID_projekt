@@ -41,9 +41,6 @@ public class bandViewController implements Initializable {
         ResultSet rs = DBConnection.executeQuery("SELECT * FROM utwory u WHERE id_utworu IN " +
                 "(SELECT id_utworu FROM utwory_autorzy WHERE id_autora = " + band.getId_autora() +
                 ") ORDER BY u.oceny_suma::NUMERIC/GREATEST(u.oceny_liczba, 1) DESC LIMIT 5");
-        /*ResultSet rs = DBConnection.executeQuery("SELECT * FROM utwory u WHERE id_utworu IN " +
-                "(SELECT id_utworu FROM utwory_autorzy WHERE id_autora = " + band.getId_autora() + ") " +
-                "ORDER BY (CASE WHEN u.oceny_liczba >0 THEN ROUND(u.oceny_suma::NUMERIC/u.oceny_liczba, 2) ELSE NULL) LIMIT 5");*/
         ObservableList<Utwor> greatestHits = FXCollections.observableArrayList();
         try {
             while (rs.next()) {

@@ -23,14 +23,14 @@ public class uzytkownikViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         username.setText(Main.currentTitle.getNazwa());
-        playlist_napis.setText(Main.currentTitle.getNazwa()+"'s playlists:");
-        num_followers.setText("followers: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
-        num_following.setText("following: "+UzytkownikDao.getObesrwuje(Main.currentTitle.getNazwa()));
+        playlist_napis.setText("Udostępnione playlisty:");
+        num_followers.setText("liczba obserwujących: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
+        num_following.setText("liczba obserwowanych: "+UzytkownikDao.getObesrwuje(Main.currentTitle.getNazwa()));
         playlists.setItems(PlaylistaDao.getVisiblePlaylistsFor(((Uzytkownik)Main.currentTitle).getId_uzytkownika(), Main.currentUser.getId_uzytkownika()));
         if(UzytkownikDao.doIfollow((int)((Uzytkownik)Main.currentTitle).getId_uzytkownika()))
-        follow_btn.setText("unfollow");
+        follow_btn.setText("nie obserwuj");
         else
-            follow_btn.setText("follow");
+            follow_btn.setText("obserwuj");
     }
     public void myPlaylistChosen(javafx.scene.input.MouseEvent mouseEvent){
         ToSearch utwor =playlists.getSelectionModel().getSelectedItem();
@@ -54,17 +54,17 @@ public class uzytkownikViewController implements Initializable {
     }
 
     public void follow(ActionEvent actionEvent) {
-        if(follow_btn.getText()=="follow"){
+        if(follow_btn.getText()=="obserwuj"){
             UzytkownikDao.follow(((Uzytkownik)Main.currentTitle).getId_uzytkownika());
-            follow_btn.setText("unfollow");
+            follow_btn.setText("nie obserwuj");
             playlists.setItems(PlaylistaDao.getVisiblePlaylistsFor(((Uzytkownik)Main.currentTitle).getId_uzytkownika(), Main.currentUser.getId_uzytkownika()));
         }
         else{
             UzytkownikDao.unfollow(((Uzytkownik)Main.currentTitle).getId_uzytkownika());
-            follow_btn.setText("follow");
+            follow_btn.setText("obserwuj");
             playlists.setItems(PlaylistaDao.getVisiblePlaylistsFor(((Uzytkownik)Main.currentTitle).getId_uzytkownika(), Main.currentUser.getId_uzytkownika()));
         }
-        num_followers.setText("followers: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
+        num_followers.setText("liczba obserwujących: "+UzytkownikDao.getObesrwujacy(Main.currentTitle.getNazwa()));
     }
 }
 

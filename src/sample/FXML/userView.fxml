@@ -25,12 +25,12 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="Welcome!">
+                                    <Label text="Witaj!">
                                        <font>
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <Button mnemonicParsing="false" text="Log out">
+                                    <Button mnemonicParsing="false" onAction="#logOut" text="Wyloguj się">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -43,7 +43,7 @@
                                     <Insets bottom="10.0" left="40.0" right="40.0" />
                                  </VBox.margin>
                               </HBox>
-                              <Label fx:id="username" text="Username">
+                              <Label fx:id="username" text="Nazwa użytkownika:">
                                  <VBox.margin>
                                     <Insets bottom="20.0" left="40.0" />
                                  </VBox.margin>
@@ -51,7 +51,7 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="email" text="Email">
+                              <Label fx:id="email" text="Email:">
                                  <VBox.margin>
                                     <Insets left="40.0" />
                                  </VBox.margin>
@@ -69,7 +69,7 @@
                                           <Image url="@../resources/search-icon.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="Search:">
+                                    <Label text="Wyszukaj:">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -91,7 +91,7 @@
                      <children>
                         <VBox prefHeight="358.0" prefWidth="602.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="478.0" text="Recomended titles: ">
+                              <Label prefHeight="30.0" prefWidth="478.0" text="Sugerowane utwory:">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -112,7 +112,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="My playlists:">
+                              <Label text="Moje playlisty:">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -120,7 +120,7 @@
                                     <Insets bottom="20.0" />
                                  </padding>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#newPlaylist" text="Create new">
+                              <Button mnemonicParsing="false" onAction="#newPlaylist" text="Dodaj">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

@@ -21,7 +21,7 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="usernameField" promptText="username">
+            <TextField fx:id="usernameField" promptText="login">
                <VBox.margin>
                   <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
                </VBox.margin>
@@ -29,7 +29,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordField" promptText="password">
+            <PasswordField fx:id="passwordField" promptText="hasło">
                <VBox.margin>
                   <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
                </VBox.margin>
@@ -37,7 +37,7 @@
                   <Font size="15.0" />
                </font>
             </PasswordField>
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="26.0" prefWidth="80.0" text="Login">
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="26.0" prefWidth="120.0" text="Zaloguj się">
                <VBox.margin>
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
@@ -45,7 +45,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInButtonClick" prefHeight="31.0" prefWidth="80.0" text="Sign in">
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInButtonClick" prefHeight="31.0" prefWidth="120.0" text="Rejestracja">
                <font>
                   <Font size="15.0" />
                </font>

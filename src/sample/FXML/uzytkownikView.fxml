@@ -37,7 +37,7 @@
                               </ImageView>
                            </children>
                         </HBox>
-                                  <Label fx:id="num_followers" prefHeight="21.0" prefWidth="169.0" text="followers">
+                                  <Label fx:id="num_followers" prefHeight="21.0" text="followers">
                                       <VBox.margin>
                                           <Insets top="10.0" />
                                       </VBox.margin>
@@ -45,12 +45,12 @@
                                           <Font size="18.0" />
                                       </font>
                                   </Label>
-                        <Label fx:id="num_following" prefHeight="48.0" prefWidth="199.0" text="following">
+                        <Label fx:id="num_following" prefHeight="48.0" text="following">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="follow_btn" mnemonicParsing="false" onAction="#follow" text="Follow" />
+                        <Button fx:id="follow_btn" mnemonicParsing="false" onAction="#follow" text="Obserwuj" />
                               </children>
                           </VBox>
                       </children>
@@ -68,7 +68,7 @@
                                     </padding>
                                 </Label>
                                 <ListView fx:id="playlists" onMouseClicked="#myPlaylistChosen" prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" text="HOME">
+                        <Button fx:id="goHome" mnemonicParsing="false" onAction="#goHome" text="WRÓĆ">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin></Button>

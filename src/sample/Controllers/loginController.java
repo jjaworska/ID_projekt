@@ -34,9 +34,9 @@ public class loginController {
         }
         else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid username");
-            alert.setHeaderText("The provided username or password is incorrect");
-            alert.setContentText("Please try again");
+            alert.setTitle("Niepoprawne dane");
+            alert.setHeaderText("Wpisana nazwa użytkownika i hasło są niepoprawne");
+            alert.setContentText("Spróbuj ponownie");
             alert.showAndWait();
         }
     }

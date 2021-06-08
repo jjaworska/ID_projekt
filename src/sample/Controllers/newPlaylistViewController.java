@@ -73,31 +73,31 @@ public class newPlaylistViewController implements Initializable {
     public void createPlaylist() {
         if(nameField.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Data missing");
-            alert.setHeaderText("You have to specify the playlist name");
-            alert.setContentText("Fill in the form and try again");
+            alert.setTitle("Niekompletne dane");
+            alert.setHeaderText("Należy podać nazwę playlisty");
+            //alert.setContentText("Fill in the form and try again");
             alert.showAndWait();
         }
         else if(dostep.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Data missing");
-            alert.setHeaderText("You have to specify the playlist access mode");
-            alert.setContentText("Choose one of the fields and try again");
+            alert.setTitle("Niekompletne dane");
+            alert.setHeaderText("Trzeba wybrać rodzaj dostępu");
+            //alert.setContentText("Choose one of the fields and try again");
             alert.showAndWait();
         }
         else if(previewList.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Data missing");
-            alert.setHeaderText("A playlist must contain at least one song");
-            alert.setContentText("Choose any song and try again");
+            alert.setTitle("Niekompletne dane");
+            alert.setHeaderText("Playlista musi zawierać przynajmniej jeden utwór");
+            //alert.setContentText("Choose any song and try again");
             alert.showAndWait();
         }
-        if(PlaylistaDao.getByTworca((int)Main.currentUser.getId_uzytkownika()).stream().map(x->x.getNazwa()).
+        else if(PlaylistaDao.getByTworca((int)Main.currentUser.getId_uzytkownika()).stream().map(x->x.getNazwa()).
                 toList().contains(nameField.getText())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Same name");
-            alert.setHeaderText("Two playlists cannot have the same name");
-            alert.setContentText("Change the name and try again");
+            alert.setTitle("Powtarzająca się nazwa");
+            alert.setHeaderText("Użytkownik nie może mieć dwóch playlist o jednakowej nazwie");
+            //alert.setContentText("Change the name and try again");
             alert.showAndWait();
         }
         else {
@@ -110,10 +110,21 @@ public class newPlaylistViewController implements Initializable {
                 realDostep = "O";
             if(dostepChosen.equals("Ukryty"))
                 realDostep = "U";
-            PlaylistaDao.addPlaylist(nazwa, realDostep);
-            previewList.stream().forEach(x->PlaylistaDao.addUtworToPlaylist(x.getId_utworu()));
-            // TODO : wklepać te dane do bazy
-            // nazwa, tworca, dostep i utwory
+            try {
+                PlaylistaDao.addPlaylist(nazwa, realDostep);
+                previewList.stream().forEach(x -> PlaylistaDao.addUtworToPlaylist(x.getId_utworu()));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Dodano playlistę");
+                alert.setHeaderText("Twoja playlista jest teraz w bazie danych");
+                alert.showAndWait();
+                Main.setCurrentScene("FXML/userView.fxml");
+            } catch(Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Nieoczekiwany błąd");
+                alert.setHeaderText("Wystąpił niespodziewany błąd, nie mogliśmy dodać playlisty do bazy");
+                alert.setContentText("Spróbuj ponownie");
+                alert.showAndWait();
+            }
         }
     }
 

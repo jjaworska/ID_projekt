@@ -31,37 +31,37 @@ public class newUserController {
         Matcher m = p.matcher(emailField.getText());
         if(u != null || usernameField.getText()=="")
         {
-            alert.setTitle("Invalid username");
-            alert.setHeaderText("Provided username is already taken");
-            alert.setContentText("Please choose different username");
+            alert.setTitle("Niepoprawna nazwa użytkownika");
+            alert.setHeaderText("Ten login jest już zajęty");
+            alert.setContentText("Wybierz inny login");
             alert.showAndWait();
         }
         else if (!m.find())
         {
-            alert.setTitle("Invalid email");
-            alert.setHeaderText("Provided email is incorrect");
-            alert.setContentText("Please choose valid email");
+            alert.setTitle("Niepoprawny email");
+            alert.setHeaderText("Podany email jest niepoprawny");
+            alert.setContentText("Wpisz prawidłowy email");
             alert.showAndWait();
         }
         else if(!passwordField.getText().equals(repeatPasswordField.getText()))
         {
-            alert.setTitle("Invalid password");
-            alert.setHeaderText("Passwords do not match");
-            alert.setContentText("Please make sure both passwords are same");
+            alert.setTitle("Niepoprawne hasło");
+            alert.setHeaderText("Dwa wpisane hasła się różnią");
+            alert.setContentText("Upewnij się, że wpisane hasła są jednakowe");
             alert.showAndWait();
         }
         else if(passwordField.getText().length() >20)
         {
-            alert.setTitle("Invalid password");
-            alert.setHeaderText("Password is too long");
-            alert.setContentText("Password length should be 5-20 characters");
+            alert.setTitle("Niepoprawne hasło");
+            alert.setHeaderText("Hasło jest zbyt długie");
+            alert.setContentText("Długość hasła to 5-20 znaków");
             alert.showAndWait();
         }
         else if(passwordField.getText().length() <5)
         {
-            alert.setTitle("Invalid password");
-            alert.setHeaderText("Password is too short");
-            alert.setContentText("Password length should be 5-20 characters");
+            alert.setTitle("Niepoprawne hasło");
+            alert.setHeaderText("Hasło jest zbyt krótkie");
+            alert.setContentText("Długość hasła to 5-20 znaków");
             alert.showAndWait();
         }
         else
