@@ -122,4 +122,15 @@ public class userViewController implements Initializable {
             }
         }
     }
+
+    @FXML
+    public void logOut() {
+        Main.currentUser = null;
+        Main.setCurrentScene("FXML/login.fxml");
+    }
+
+    @FXML
+    public void newPlaylist() {
+        Main.setCurrentScene("FXML/newPlaylistView.fxml");
+    }
 }
