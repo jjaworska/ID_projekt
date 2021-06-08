@@ -2,11 +2,13 @@ package sample.DB;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.Main;
 import sample.model.Playlista;
 import sample.model.Utwor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -81,4 +83,33 @@ public class PlaylistaDao {
         }
         return res;
     }
+
+    public static void addPlaylist(String nazwa, String dostep) {
+        try {
+            Statement stmt = DBConnection.getConnection().createStatement();
+            stmt.executeUpdate("insert into playlisty (tworca, nazwa, dostep) values " +
+                    "("+ Main.currentUser.getId_uzytkownika()+", '"+ nazwa+"', '"+dostep+"')");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addUtworToPlaylist(long id) {
+        Integer id_playlisty=0;
+        ResultSet rs = DBConnection.executeQuery("select max(id_playlisty) from playlisty");
+        try {
+            if(rs != null && rs.next()) {
+                id_playlisty=rs.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            Statement stmt = DBConnection.getConnection().createStatement();
+            stmt.executeUpdate("insert into utwory_playlisty values ("+id_playlisty+", "+id+")");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -92,16 +92,26 @@ public class newPlaylistViewController implements Initializable {
             alert.setContentText("Choose any song and try again");
             alert.showAndWait();
         }
+        if(PlaylistaDao.getByTworca((int)Main.currentUser.getId_uzytkownika()).stream().map(x->x.getNazwa()).
+                toList().contains(nameField.getText())){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Same name");
+            alert.setHeaderText("Two playlists cannot have the same name");
+            alert.setContentText("Change the name and try again");
+            alert.showAndWait();
+        }
         else {
             String nazwa = nameField.getText();
             String dostepChosen = dostep.getSelectionModel().getSelectedItem();
-            String realDostep;
+            String realDostep=null;
             if(dostepChosen.equals("Publiczny"))
                 realDostep = "P";
             if(dostepChosen.equals("Dla obserwujących"))
                 realDostep = "O";
             if(dostepChosen.equals("Ukryty"))
                 realDostep = "U";
+            PlaylistaDao.addPlaylist(nazwa, realDostep);
+            previewList.stream().forEach(x->PlaylistaDao.addUtworToPlaylist(x.getId_utworu()));
             // TODO : wklepać te dane do bazy
             // nazwa, tworca, dostep i utwory
         }
