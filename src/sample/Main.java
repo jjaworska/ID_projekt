@@ -17,7 +17,7 @@ public class Main extends Application {
     public static ToSearch currentTitle=null;
     @Override
     public void start(Stage newPrimaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/connectToDB.fxml"));
         primaryStage = newPrimaryStage;
         primaryStage.setTitle("The music app");
         primaryStage.setScene(new Scene(root));

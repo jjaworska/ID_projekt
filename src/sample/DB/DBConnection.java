@@ -1,12 +1,44 @@
 package sample.DB;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import sample.Main;
+
 import java.sql.*;
 
 public class DBConnection {
-    private final static String URL = "jdbc:postgresql://localhost:5432/projekt";
-    private final static String USER = "projekt_user";
-    private final static String PASSWD = "projekt";
+    @FXML
+    public TextField host;
+    @FXML
+    public TextField port;
+    @FXML
+    public TextField user;
+    @FXML
+    public TextField dbname;
+    @FXML
+    public PasswordField passwd;
+
+    private static String URL = "jdbc:postgresql://localhost:5432/projekt";
+    private static String USER = "projekt_user";
+    private static String PASSWD = "projekt";
     private static Connection connection;
+
+    public void connect() {
+        try {
+            URL = "jdbc:postgresql://" + host.getText() + ":" + port.getText() + "/" + dbname.getText();
+            USER = user.getText();
+            PASSWD = passwd.getText();
+            connection = DriverManager.getConnection(URL, USER, PASSWD);
+            Main.setCurrentScene("FXML/login.fxml");
+        } catch(Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Błąd połączenia");
+            alert.setHeaderText("Nie udało się połączyć ze wskazaną bazą");
+            alert.showAndWait();
+        }
+    }
 
     public static Connection getConnection() {
         if (connection == null) {
