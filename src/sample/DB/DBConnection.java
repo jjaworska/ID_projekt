@@ -34,7 +34,7 @@ public class DBConnection {
             Main.setCurrentScene("FXML/login.fxml");
         } catch(Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd połączenia");
+            alert.setTitle("Wystąpił błąd połączenia");
             alert.setHeaderText("Nie udało się połączyć ze wskazaną bazą");
             alert.showAndWait();
         }
