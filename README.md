@@ -10,6 +10,6 @@ Aplikacja została napisana w javieFX, do komunikacji z bazą danych użyto JDBC
 - bibliotekę javaFX (prawdopodobnie trzeba będzie dodać ją ręcznie w projekcie)
 - Driver do JDBC: https://jdbc.postgresql.org/download.html (ponownie, odpowiedni plik .jar będzie najprawdopodobniej trzeba załączyć ręcznie do struktury projektu)
 
-Przed uruchomieniem aplikacji trzeba wykonać jeszcze jeden krok - stworzyć odpowiednią bazę danych (proszę się skontaktować z nami po więcej informacji).
+Przed uruchomieniem aplikacji trzeba wykonać jeszcze jeden krok - stworzyć odpowiednią bazę danych przy użyciu pliku create.sql.
 
 Ikonki widoczne w aplikacji pochodzą z serwisu www.flaticon.com
